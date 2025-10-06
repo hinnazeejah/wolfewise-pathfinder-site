@@ -37,7 +37,7 @@ const Services = () => {
             return (
               <Card
                 key={service.title}
-                className="border-2 border-primary/20 hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 bg-white"
+                className="border-2 border-primary/20 hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 bg-white flex flex-col"
               >
                 <CardHeader>
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-pink-500 flex items-center justify-center mb-4 shadow-lg">
@@ -47,11 +47,11 @@ const Services = () => {
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <CardDescription className="text-base text-foreground/80 mb-6">
+                <CardContent className="flex flex-col flex-1">
+                  <CardDescription className="text-base text-foreground/80 mb-6 flex-1">
                     {service.description}
                   </CardDescription>
-                  <Link to="/book">
+                  <Link to="/book" className="mt-auto">
                     <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
                       Book a Consultation
                     </Button>

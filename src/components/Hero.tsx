@@ -11,13 +11,13 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="pt-24 pb-16 md:pt-32 md:pb-24">
+    <section id="home" className="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-pink-50 via-white to-pink-50">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Content */}
           <div className="space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-secondary leading-tight">
-              What comes after high school?
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight">
+              <span className="gradient-text">What comes after high school?</span>
             </h1>
             <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
               At WolfeWise Consulting, I guide teens and families through this important transition with clarity and purpose. With 29 years of teaching experience and the honor of being named the{" "}
@@ -58,9 +58,9 @@ const Hero = () => {
         </div>
 
         {/* Homepage Banner */}
-        <div className="mt-16 bg-accent border-l-4 border-primary rounded-lg p-6 md:p-8 shadow-lg">
-          <p className="text-lg md:text-xl text-foreground leading-relaxed">
-            <strong className="text-primary">WolfeWise Consulting</strong> helps teens build academic skills today and discover their purpose for tomorrow — combining tutoring and future coaching so every student moves forward with confidence and clarity.
+        <div className="mt-16 bg-gradient-to-r from-primary to-pink-500 rounded-2xl p-8 md:p-10 shadow-2xl">
+          <p className="text-lg md:text-xl text-white leading-relaxed">
+            <strong className="font-bold">WolfeWise Consulting</strong> helps teens build academic skills today and discover their purpose for tomorrow — combining tutoring and future coaching so every student moves forward with confidence and clarity.
           </p>
         </div>
       </div>

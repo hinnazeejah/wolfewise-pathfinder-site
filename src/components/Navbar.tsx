@@ -38,16 +38,16 @@ const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-sm shadow-md" : "bg-background"
+        isScrolled ? "bg-white/95 backdrop-blur-sm shadow-lg border-b-2 border-primary/20" : "bg-white"
       }`}
     >
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link
           to="/"
-          className="text-2xl font-heading font-bold text-primary hover:opacity-80 transition-opacity"
+          className="text-2xl font-heading font-bold hover:opacity-80 transition-opacity"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          WolfeWise Consulting
+          <span className="gradient-text">WolfeWise Consulting</span>
         </Link>
 
         {/* Desktop Navigation */}

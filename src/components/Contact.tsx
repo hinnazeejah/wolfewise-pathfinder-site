@@ -39,22 +39,22 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-accent">
+    <section id="contact" className="py-16 md:py-24 bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-secondary mb-4">
-            Get in Touch
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
+            <span className="text-primary">Get in</span> <span className="text-white">Touch</span>
           </h2>
-          <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
             Ready to start the journey? Reach out today and let's discuss how we can help your teen thrive.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Contact Information */}
-          <Card className="border-2 border-border">
+          <Card className="border-2 border-primary/30 bg-white shadow-xl">
             <CardHeader>
-              <CardTitle className="text-2xl font-heading font-bold text-secondary">
+              <CardTitle className="text-2xl font-heading font-bold gradient-text">
                 Contact Information
               </CardTitle>
               <CardDescription>
@@ -63,8 +63,8 @@ const Contact = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-pink-500 flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <Phone className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground font-medium">Phone</p>
@@ -78,8 +78,8 @@ const Contact = () => {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-pink-500 flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <Mail className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground font-medium">Email</p>
@@ -99,7 +99,7 @@ const Contact = () => {
                     href="https://instagram.com/wolfewiseconsulting"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all"
+                    className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-pink-500 flex items-center justify-center hover:scale-110 transition-all shadow-lg text-white"
                     aria-label="Instagram"
                   >
                     <Instagram className="w-6 h-6" />
@@ -108,7 +108,7 @@ const Contact = () => {
                     href="https://facebook.com/wolfewiseconsulting"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full bg-accent flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all"
+                    className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-pink-500 flex items-center justify-center hover:scale-110 transition-all shadow-lg text-white"
                     aria-label="Facebook"
                   >
                     <Facebook className="w-6 h-6" />
@@ -119,9 +119,9 @@ const Contact = () => {
           </Card>
 
           {/* Contact Form */}
-          <Card className="border-2 border-border">
+          <Card className="border-2 border-primary/30 bg-white shadow-xl">
             <CardHeader>
-              <CardTitle className="text-2xl font-heading font-bold text-secondary">
+              <CardTitle className="text-2xl font-heading font-bold gradient-text">
                 Send Us a Message
               </CardTitle>
               <CardDescription>

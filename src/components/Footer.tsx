@@ -9,12 +9,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-secondary text-secondary-foreground py-12">
+    <footer className="bg-gradient-to-br from-secondary to-black py-12 border-t-4 border-primary">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <h3 className="text-xl font-heading font-bold text-primary-foreground mb-4">
+            <h3 className="text-xl font-heading font-bold text-primary mb-4">
               WolfeWise Consulting
             </h3>
             <p className="text-secondary-foreground/80">
@@ -43,7 +43,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-heading font-semibold text-primary-foreground mb-4">
+            <h4 className="text-lg font-heading font-semibold text-primary mb-4">
               Contact Us
             </h4>
             <ul className="space-y-3">
@@ -70,19 +70,19 @@ const Footer = () => {
                   href="https://instagram.com/wolfewiseconsulting"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-secondary-foreground/80 hover:text-primary transition-colors"
+                  className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
                   aria-label="Instagram"
                 >
-                  <Instagram size={24} />
+                  <Instagram size={20} />
                 </a>
                 <a
                   href="https://facebook.com/wolfewiseconsulting"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-secondary-foreground/80 hover:text-primary transition-colors"
+                  className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
                   aria-label="Facebook"
                 >
-                  <Facebook size={24} />
+                  <Facebook size={20} />
                 </a>
               </li>
             </ul>

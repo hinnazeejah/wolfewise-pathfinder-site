@@ -20,11 +20,11 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-16 md:py-24">
+    <section id="services" className="py-16 md:py-24 bg-gradient-to-br from-pink-50 via-white to-pink-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-secondary mb-4">
-            Our Services
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
+            <span className="gradient-text">Our Services</span>
           </h2>
           <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto">
             Combining academic support with future-focused guidance to empower every student.
@@ -37,11 +37,11 @@ const Services = () => {
             return (
               <Card
                 key={service.title}
-                className="border-2 border-border hover:border-primary transition-all duration-300 hover:shadow-xl"
+                className="border-2 border-primary/20 hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 bg-white"
               >
                 <CardHeader>
-                  <div className="w-14 h-14 rounded-full bg-accent flex items-center justify-center mb-4">
-                    <Icon className="w-7 h-7 text-primary" />
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-pink-500 flex items-center justify-center mb-4 shadow-lg">
+                    <Icon className="w-7 h-7 text-white" />
                   </div>
                   <CardTitle className="text-2xl font-heading font-bold text-secondary">
                     {service.title}

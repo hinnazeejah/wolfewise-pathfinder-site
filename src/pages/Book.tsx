@@ -43,21 +43,21 @@ const Book = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <main className="flex-1 pt-24 pb-16">
+      <main className="flex-1 pt-24 pb-16 bg-gradient-to-br from-pink-50 via-white to-pink-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-heading font-bold text-secondary mb-4">
-                Book Your Consultation
+              <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
+                <span className="gradient-text">Book Your Consultation</span>
               </h1>
               <p className="text-lg md:text-xl text-foreground/80">
                 Take the first step toward clarity and confidence. Schedule your personalized session today.
               </p>
             </div>
 
-            <Card className="border-2 border-border shadow-xl">
-              <CardHeader className="bg-accent">
-                <CardTitle className="text-2xl font-heading font-bold text-secondary">
+            <Card className="border-2 border-primary/30 shadow-2xl">
+              <CardHeader className="bg-gradient-to-r from-primary/10 to-pink-100">
+                <CardTitle className="text-2xl font-heading font-bold gradient-text">
                   Consultation Details
                 </CardTitle>
                 <CardDescription className="text-base">
@@ -68,8 +68,8 @@ const Book = () => {
               <CardContent className="pt-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center">
-                      <Clock className="w-6 h-6 text-primary" />
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-pink-500 flex items-center justify-center shadow-lg">
+                      <Clock className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Duration</p>
@@ -78,8 +78,8 @@ const Book = () => {
                   </div>
                   
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center">
-                      <Calendar className="w-6 h-6 text-primary" />
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-pink-500 flex items-center justify-center shadow-lg">
+                      <Calendar className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Format</p>
@@ -88,8 +88,8 @@ const Book = () => {
                   </div>
                   
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center">
-                      <CheckCircle2 className="w-6 h-6 text-primary" />
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-pink-500 flex items-center justify-center shadow-lg">
+                      <CheckCircle2 className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Price</p>

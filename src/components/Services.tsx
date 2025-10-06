@@ -48,7 +48,7 @@ const Services = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <CardDescription className="text-base text-foreground/80">
+                  <CardDescription className="text-base text-foreground/80 mb-6">
                     {service.description}
                   </CardDescription>
                   <Link to="/book">

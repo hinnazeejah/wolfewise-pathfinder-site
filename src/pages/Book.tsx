@@ -83,7 +83,7 @@ const Book = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Format</p>
-                      <p className="font-semibold text-foreground">Virtual/In-Person</p>
+                      <p className="font-semibold text-foreground">Virtual Only</p>
                     </div>
                   </div>
                   

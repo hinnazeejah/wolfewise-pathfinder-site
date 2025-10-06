@@ -49,7 +49,7 @@ const ThankYou = () => {
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">2. Schedule Confirmation</h3>
                     <p className="text-foreground/80">
-                      Once payment is received, we'll confirm your appointment time and send you meeting details (Zoom link or in-person address).
+                      Once payment is received, we'll confirm your appointment time and send you the virtual meeting link (Zoom).
                     </p>
                   </div>
                 </div>

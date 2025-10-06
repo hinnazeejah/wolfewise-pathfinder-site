@@ -17,7 +17,7 @@ const Hero = () => {
           {/* Left: Content */}
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight">
-              <span className="gradient-text">What comes after high school?</span>
+              <span className="gradient-text">WolfeWise Consulting</span>
             </h1>
             <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
               At WolfeWise Consulting, I guide teens and families through this important transition with clarity and purpose. With 29 years of teaching experience and the honor of being named the{" "}

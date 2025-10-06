@@ -41,7 +41,7 @@ const Navbar = () => {
         isScrolled ? "bg-white/95 backdrop-blur-sm shadow-lg border-b-2 border-primary/20" : "bg-white"
       }`}
     >
-      <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <nav className="container mx-auto px-6 md:px-8 lg:px-12 py-4 flex items-center justify-between">
         <Link
           to="/"
           className="text-2xl font-heading font-bold hover:opacity-80 transition-opacity"
@@ -81,7 +81,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-background border-t border-border">
-          <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+          <div className="container mx-auto px-6 md:px-8 py-4 flex flex-col gap-4">
             {navLinks.map((link) => (
               <button
                 key={link.href}

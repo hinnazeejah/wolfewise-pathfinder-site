@@ -21,7 +21,7 @@ const Services = () => {
 
   return (
     <section id="services" className="py-16 md:py-24 bg-gradient-to-br from-pink-50 via-white to-pink-50">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 md:px-8 lg:px-12">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
             <span className="gradient-text">Our Services</span>

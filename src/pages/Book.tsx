@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PayPalPayment from "@/components/PayPalPayment";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Calendar, Clock, CheckCircle2 } from "lucide-react";
+import { Calendar, Clock, CheckCircle2, CreditCard } from "lucide-react";
 
 const Book = () => {
   const { toast } = useToast();
@@ -24,6 +25,66 @@ const Book = () => {
       ...prev,
       [e.target.name]: e.target.value,
     }));
+  };
+
+  const handlePaymentSuccess = (details: any) => {
+    console.log('Payment successful:', details);
+    setIsPaid(true);
+    
+    toast({
+      title: "Payment Successful! 🎉",
+      description: "Your consultation has been booked. You'll receive a confirmation email shortly.",
+    });
+
+    // Send booking confirmation to backend
+    sendBookingConfirmation(details);
+  };
+
+  const handlePaymentError = (error: any) => {
+    console.error('Payment error:', error);
+    toast({
+      title: "Payment Failed",
+      description: "There was an issue processing your payment. Please try again or contact support.",
+      variant: "destructive"
+    });
+  };
+
+  const sendBookingConfirmation = async (paymentDetails: any) => {
+    try {
+      const response = await fetch('/api/booking-confirmation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          paymentDetails,
+          amount: 100,
+          currency: 'USD'
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send booking confirmation');
+      }
+
+      const result = await response.json();
+      console.log('Booking confirmation sent:', result);
+      
+      setTimeout(() => {
+        navigate("/thank-you");
+      }, 2000);
+    } catch (error) {
+      console.error('Error sending booking confirmation:', error);
+      toast({
+        title: "Booking Confirmed",
+        description: "Payment successful! You'll receive a confirmation email shortly.",
+      });
+      
+      setTimeout(() => {
+        navigate("/thank-you");
+      }, 2000);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -103,13 +164,15 @@ const Book = () => {
                     Schedule Your Session
                   </h3>
 
-                  {/* PayPal Integration Notice */}
+                  {/* PayPal Payment Notice */}
                   <div className="bg-primary/10 border-l-4 border-primary rounded-lg p-6 mb-8">
-                    <p className="text-sm text-foreground/80 mb-4">
-                      <strong className="text-primary">Payment via PayPal:</strong> Complete the form below, and we'll send you a secure PayPal invoice for $100 to confirm your booking.
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      Note: To enable direct PayPal checkout here, add your PayPal Client ID as an environment variable.
+                    <div className="flex items-center gap-3 mb-3">
+                      <CreditCard className="w-6 h-6 text-primary" />
+                      <h4 className="text-lg font-semibold text-foreground">Secure PayPal Payment</h4>
+                    </div>
+                    <p className="text-sm text-foreground/80">
+                      Complete the form below, then pay securely with PayPal to book your consultation. 
+                      Your payment is processed safely through PayPal's secure platform.
                     </p>
                   </div>
 
@@ -179,12 +242,22 @@ const Book = () => {
                       </p>
                     </div>
 
-                    <Button
-                      type="submit"
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-lg py-6"
-                    >
-                      Submit Booking Request
-                    </Button>
+                    <div className="space-y-4">
+                      <div className="bg-primary/5 border border-primary/20 rounded-lg p-4">
+                        <h5 className="font-semibold text-foreground mb-2">Complete Payment</h5>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          Fill out the form above, then complete your payment with PayPal to secure your consultation.
+                        </p>
+                        <PayPalPayment
+                          amount={100}
+                          currency="USD"
+                          description="Teen Life Coaching Consultation"
+                          onSuccess={handlePaymentSuccess}
+                          onError={handlePaymentError}
+                          disabled={!formData.name || !formData.email || !formData.phone || !formData.preferredTimes}
+                        />
+                      </div>
+                    </div>
                   </form>
                 </div>
               </CardContent>

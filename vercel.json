@@ -1,0 +1,13 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "functions": {
+    "api/contact.js": {
+      "maxDuration": 10
+    },
+    "api/booking-confirmation.js": {
+      "maxDuration": 10
+    }
+  }
+}

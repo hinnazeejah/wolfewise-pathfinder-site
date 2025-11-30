@@ -59,7 +59,7 @@ const Book = () => {
         body: JSON.stringify({
           ...formData,
           paymentDetails,
-          amount: 0,
+          amount: 100,
           currency: 'USD'
         }),
       });
@@ -92,7 +92,7 @@ const Book = () => {
     
     toast({
       title: "Booking request received!",
-      description: "You'll receive a confirmation email for your free consultation appointment.",
+      description: "You'll receive an email invoice for $100 to confirm your appointment.",
     });
 
     setTimeout(() => {
@@ -134,7 +134,7 @@ const Book = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Duration</p>
-                      <p className="font-semibold text-foreground">30 minutes</p>
+                      <p className="font-semibold text-foreground">60 minutes</p>
                     </div>
                   </div>
                   
@@ -154,7 +154,7 @@ const Book = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Price</p>
-                      <p className="font-semibold text-primary text-xl">Free ($0)</p>
+                      <p className="font-semibold text-primary text-xl">$100</p>
                     </div>
                   </div>
                 </div>
@@ -249,7 +249,7 @@ const Book = () => {
                           Fill out the form above, then complete your payment with PayPal to secure your consultation.
                         </p>
                         <PayPalPayment
-                          amount={0}
+                          amount={100}
                           currency="USD"
                           description="Teen Life Coaching Consultation"
                           onSuccess={handlePaymentSuccess}

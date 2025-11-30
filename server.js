@@ -27,23 +27,6 @@ app.post('/api/contact', async (req, res) => {
       });
     }
 
-    // Check if Resend API key is configured
-    if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 'your_resend_api_key_here') {
-      console.log('📧 Contact form submission (EMAIL DISABLED - No API key configured):');
-      console.log(`Name: ${name}`);
-      console.log(`Email: ${email}`);
-      console.log(`Subject: ${subject}`);
-      console.log(`Message: ${message}`);
-      console.log('---');
-      
-      // Return success even though email wasn't sent
-      return res.json({ 
-        success: true, 
-        message: 'Message received (email service not configured)',
-        note: 'Please configure RESEND_API_KEY in .env.local to enable email notifications'
-      });
-    }
-
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: process.env.FROM_EMAIL || 'noreply@yourdomain.com',

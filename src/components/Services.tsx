@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
-import { Compass } from "lucide-react";
+import { BookOpen, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Services = () => {
   const services = [
+    {
+      icon: BookOpen,
+      title: "Personalized Tutoring",
+      description:
+        "Strengthen academic skills with individualized support tailored to each student's learning style and goals.",
+    },
     {
       icon: Compass,
       title: "Post–High School Coaching",
@@ -21,11 +27,11 @@ const Services = () => {
             <span className="gradient-text">Our Services</span>
           </h2>
           <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto">
-            Providing personalized guidance to help teens discover their authentic path forward and make confident decisions about their future.
+            Combining academic support with future-focused guidance to empower every student.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {services.map((service) => {
             const Icon = service.icon;
             return (

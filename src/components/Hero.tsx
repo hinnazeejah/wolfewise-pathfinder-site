@@ -35,7 +35,7 @@ const Hero = () => {
               <span className="gradient-text">WolfeWise Consulting</span>
             </h1>
             <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
-              At WolfeWise Consulting, I guide teens and families through this important transition with clarity and purpose. With 29 years of teaching experience and the honor of being named the{" "}
+              WolfeWise Consulting provides personalized guidance for teens navigating the journey from high school to their future. With 29 years of teaching experience and the honor of being named the{" "}
               <strong className="text-primary">2021 New York State Teacher of the Year</strong>, I've seen how the right support empowers students to thrive.
             </p>
             <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">

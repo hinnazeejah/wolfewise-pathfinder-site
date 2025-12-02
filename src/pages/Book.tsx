@@ -2,17 +2,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import PayPalPayment from "@/components/PayPalPayment";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Calendar, Clock, CheckCircle2, CreditCard } from "lucide-react";
+import { Calendar, Clock, CheckCircle2 } from "lucide-react";
 
 const Book = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
-  const [isPaid, setIsPaid] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,29 +27,7 @@ const Book = () => {
     }));
   };
 
-  const handlePaymentSuccess = (details: any) => {
-    console.log('Payment successful:', details);
-    setIsPaid(true);
-    
-    toast({
-      title: "Payment Successful! 🎉",
-      description: "Your consultation has been booked. You'll receive a confirmation email shortly.",
-    });
-
-    // Send booking confirmation to backend
-    sendBookingConfirmation(details);
-  };
-
-  const handlePaymentError = (error: any) => {
-    console.error('Payment error:', error);
-    toast({
-      title: "Payment Failed",
-      description: "There was an issue processing your payment. Please try again or contact support.",
-      variant: "destructive"
-    });
-  };
-
-  const sendBookingConfirmation = async (paymentDetails: any) => {
+  const sendBookingRequest = async () => {
     try {
       const response = await fetch('/api/booking-confirmation', {
         method: 'POST',
@@ -58,41 +36,32 @@ const Book = () => {
         },
         body: JSON.stringify({
           ...formData,
-          paymentDetails,
-          amount: 100,
-          currency: 'USD'
+          amount: 0,
+          currency: 'USD',
+          isFreeConsultation: true
         }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to send booking confirmation');
+        throw new Error('Failed to send booking request');
       }
 
       const result = await response.json();
-      console.log('Booking confirmation sent:', result);
-      
-      setTimeout(() => {
-        navigate("/thank-you");
-      }, 2000);
+      console.log('Booking request sent:', result);
     } catch (error) {
-      console.error('Error sending booking confirmation:', error);
-      toast({
-        title: "Booking Confirmed",
-        description: "Payment successful! You'll receive a confirmation email shortly.",
-      });
-      
-      setTimeout(() => {
-        navigate("/thank-you");
-      }, 2000);
+      console.error('Error sending booking request:', error);
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    
+    await sendBookingRequest();
     
     toast({
-      title: "Booking request received!",
-      description: "You'll receive an email invoice for $100 to confirm your appointment.",
+      title: "Thank you!",
+      description: "Your request has been submitted. You'll receive a confirmation email with your consultation time.",
     });
 
     setTimeout(() => {
@@ -122,7 +91,7 @@ const Book = () => {
                   Consultation Details
                 </CardTitle>
                 <CardDescription className="text-base">
-                  One-on-one session to discuss your teen's goals, challenges, and create a personalized action plan.
+                  One-on-one 30-minute session to discuss your teen's goals, challenges, and create a personalized action plan.
                 </CardDescription>
               </CardHeader>
               
@@ -134,7 +103,7 @@ const Book = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Duration</p>
-                      <p className="font-semibold text-foreground">60 minutes</p>
+                      <p className="font-semibold text-foreground">30 minutes</p>
                     </div>
                   </div>
                   
@@ -154,27 +123,19 @@ const Book = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Price</p>
-                      <p className="font-semibold text-primary text-xl">$100</p>
+                      <p className="font-semibold text-primary text-xl">Free</p>
+                      <p className="text-xs text-muted-foreground">Limited-time offer</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="border-t border-border pt-8">
-                  <h3 className="text-xl font-heading font-bold text-secondary mb-6">
+                  <h3 className="text-xl font-heading font-bold text-secondary mb-4">
                     Schedule Your Session
                   </h3>
-
-                  {/* PayPal Payment Notice */}
-                  <div className="bg-primary/10 border-l-4 border-primary rounded-lg p-6 mb-8">
-                    <div className="flex items-center gap-3 mb-3">
-                      <CreditCard className="w-6 h-6 text-primary" />
-                      <h4 className="text-lg font-semibold text-foreground">Secure PayPal Payment</h4>
-                    </div>
-                    <p className="text-sm text-foreground/80">
-                      Complete the form below, then pay securely with PayPal to book your consultation. 
-                      Your payment is processed safely through PayPal's secure platform.
-                    </p>
-                  </div>
+                  <p className="text-foreground/80 mb-6">
+                    Complete the form below to request your free 30-minute consultation. You'll receive a follow-up email to confirm your appointment time.
+                  </p>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
@@ -228,37 +189,31 @@ const Book = () => {
                       <label htmlFor="preferredTimes" className="block text-sm font-medium text-foreground mb-2">
                         Preferred Date & Time *
                       </label>
-                      <Input
+                      <Textarea
                         id="preferredTimes"
                         name="preferredTimes"
                         value={formData.preferredTimes}
                         onChange={handleChange}
                         required
                         placeholder="e.g., Monday 3-5pm, Wednesday 10am-12pm"
-                        className="border-2 border-input focus:border-primary"
+                        className="border-2 border-input focus:border-primary min-h-[100px]"
                       />
                       <p className="text-xs text-muted-foreground mt-2">
-                        Please list 2-3 date/time options that work for you.
+                        Please list 2–3 date/time options that work for you.
                       </p>
                     </div>
 
-                    <div className="space-y-4">
-                      <div className="bg-primary/5 border border-primary/20 rounded-lg p-4">
-                        <h5 className="font-semibold text-foreground mb-2">Complete Payment</h5>
-                        <p className="text-sm text-muted-foreground mb-4">
-                          Fill out the form above, then complete your payment with PayPal to secure your consultation.
-                        </p>
-                        <PayPalPayment
-                          amount={100}
-                          currency="USD"
-                          description="Teen Life Coaching Consultation"
-                          onSuccess={handlePaymentSuccess}
-                          onError={handlePaymentError}
-                          disabled={!formData.name || !formData.email || !formData.phone || !formData.preferredTimes}
-                        />
-                      </div>
-                    </div>
+                    <Button
+                      type="submit"
+                      size="lg"
+                      disabled={isSubmitting || !formData.name || !formData.email || !formData.phone || !formData.preferredTimes}
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-lg"
+                    >
+                      {isSubmitting ? "Submitting..." : "Request Consultation"}
+                    </Button>
                   </form>
+
+                  {/* TODO: Re-enable PayPal payment when consultations are paid again */}
                 </div>
               </CardContent>
             </Card>

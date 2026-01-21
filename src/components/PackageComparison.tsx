@@ -100,7 +100,7 @@ const PackageComparison = () => {
     {
       service: "Duration",
       clarity: "3-4 weeks",
-      pathfinder: "3 months",
+      pathfinder: "2-3 months",
       launchPad: "4-6 months",
     },
   ];
@@ -125,9 +125,6 @@ const PackageComparison = () => {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold gradient-text mb-4">
                 Package Comparison Chart
               </h2>
-              <p className="text-lg md:text-xl text-primary font-semibold">
-                Book by December 31, 2025
-              </p>
             </div>
 
             {/* Table */}
@@ -181,13 +178,7 @@ const PackageComparison = () => {
                   <h3 className="font-heading font-bold text-xl text-foreground mb-4">
                     Clarity
                   </h3>
-                  <p className="text-muted-foreground line-through text-sm">
-                    Normally $497
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Book by 12/31/2025
-                  </p>
-                  <p className="text-primary font-bold text-2xl mt-2">$349.00</p>
+                  <p className="text-primary font-bold text-2xl">$497</p>
                 </CardContent>
               </Card>
 
@@ -197,13 +188,7 @@ const PackageComparison = () => {
                   <h3 className="font-heading font-bold text-xl text-foreground mb-4">
                     Pathfinder
                   </h3>
-                  <p className="text-muted-foreground line-through text-sm">
-                    Normally $1,997
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Book by 12/31/2025
-                  </p>
-                  <p className="text-primary font-bold text-2xl mt-2">$1,197.00</p>
+                  <p className="text-primary font-bold text-2xl">$1,997</p>
                 </CardContent>
               </Card>
 
@@ -213,13 +198,7 @@ const PackageComparison = () => {
                   <h3 className="font-heading font-bold text-xl text-foreground mb-4">
                     Launch Pad
                   </h3>
-                  <p className="text-muted-foreground line-through text-sm">
-                    Normally $3,497
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Book by 12/31/2025
-                  </p>
-                  <p className="text-primary font-bold text-2xl mt-2">$2,273.00</p>
+                  <p className="text-primary font-bold text-2xl">$3,497</p>
                 </CardContent>
               </Card>
             </div>

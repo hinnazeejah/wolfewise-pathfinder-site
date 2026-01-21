@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import PackageComparison from "@/components/PackageComparison";
 import Mission from "@/components/Mission";
 import Services from "@/components/Services";
+import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -15,6 +16,7 @@ const Index = () => {
         <PackageComparison />
         <Mission />
         <Services />
+        <Testimonials />
         <Contact />
       </main>
       <Footer />
